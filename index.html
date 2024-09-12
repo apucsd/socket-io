@@ -19,7 +19,7 @@
 
 
         let socket = io()
-        socket.on("message", function (message) {
+        socket.on("customEvent", function (message) {
             document.getElementById("showTime").innerHTML = ""
             document.getElementById("showTime").innerHTML = message
         })

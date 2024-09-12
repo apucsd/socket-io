@@ -12,7 +12,7 @@ io.on("connection", function (socket) {
   setInterval(function () {
     const date = new Date();
     const time = date.getTime();
-    socket.send(time);
+    socket.emit("customEvent", time);
   }, 10);
 });
 // simple get request
