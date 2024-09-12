@@ -31,15 +31,19 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
 
-        const socket = io()
-        function sendMessage() {
+        const socket = io('/buy')
+        // function sendMessage() {
 
-            const input = document.getElementById("input").value;
+        //     const input = document.getElementById("input").value;
 
 
-            // Send the message to the server
-            socket.send(input);
-        }
+        //     // Send the message to the server
+        //     socket.send(input);
+        // }
+
+        socket.on('myEvent', function (msg) {
+            console.log(msg);
+        })
 
     </script>
 </body>

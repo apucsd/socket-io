@@ -6,12 +6,11 @@ const expressServer = http.createServer(app);
 
 //socket.io server
 const io = new Server(expressServer);
-io.on("connection", function (socket) {
-  console.log("New User connected");
+const buyNsp = io.of("/buy");
 
-  socket.on("message", function (message) {
-    console.log(message);
-  });
+buyNsp.on("connection", function (socket) {
+  console.log("New User connected");
+  buyNsp.emit("myEvent", "Hlw From BUy");
 });
 // simple get request
 app.get("/", function (req, res) {
