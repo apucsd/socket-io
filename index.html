@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <h1 style="font-weight:bold;font-size: larger; ">Hello World</h1>
+    <h1 id="showTime" style="font-weight:bold;font-size: larger; ">Hello World</h1>
 
 
 
@@ -19,6 +19,10 @@
 
 
         let socket = io()
+        socket.on("message", function (message) {
+            document.getElementById("showTime").innerHTML = ""
+            document.getElementById("showTime").innerHTML = message
+        })
     </script>
 </body>
 

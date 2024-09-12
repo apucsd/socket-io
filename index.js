@@ -9,9 +9,11 @@ const io = new Server(expressServer);
 io.on("connection", function (socket) {
   console.log("New User connected");
 
-  socket.on("disconnect", function () {
-    console.log("User disconnected");
-  });
+  setInterval(function () {
+    const date = new Date();
+    const time = date.getTime();
+    socket.send(time);
+  }, 10);
 });
 // simple get request
 app.get("/", function (req, res) {
