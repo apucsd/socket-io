@@ -9,11 +9,9 @@ const io = new Server(expressServer);
 io.on("connection", function (socket) {
   console.log("New User connected");
 
-  setInterval(function () {
-    const date = new Date();
-    const time = date.getTime();
-    socket.emit("customEvent", time);
-  }, 10);
+  socket.on("message", function (message) {
+    console.log(message);
+  });
 });
 // simple get request
 app.get("/", function (req, res) {
