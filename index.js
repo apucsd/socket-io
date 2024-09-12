@@ -1,9 +1,19 @@
 const express = require("express");
 const http = require("http");
 const app = express();
-
+const { Server } = require("socket.io");
 const expressServer = http.createServer(app);
 
+//socket.io server
+const io = new Server(expressServer);
+io.on("connection", function (socket) {
+  console.log("New User connected");
+
+  socket.on("disconnect", function () {
+    console.log("User disconnected");
+  });
+});
+// simple get request
 app.get("/", function (req, res) {
   res.sendFile(__dirname + "/index.html");
 });
